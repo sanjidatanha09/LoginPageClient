@@ -28,17 +28,17 @@ const Registration = () => {
 
                 //send verification email
                 sendEmailVerification(result.user)
-                .then(() =>{
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "please check your email and verfiy your account",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    // alert('please check your email and verfiy your account')
-                    reset();
-                })
+                    .then(() => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "please check your email and verfiy your account",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // alert('please check your email and verfiy your account')
+                        reset();
+                    })
 
             })
     }
@@ -102,7 +102,7 @@ const Registration = () => {
                                 {errors.password?.type === 'pattern' && <span>one lower case, one number ,one upper case and special character</span>}
 
 
-                                
+
                             </div>
 
 

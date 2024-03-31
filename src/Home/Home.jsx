@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import Login from '../Login/Login';
+import Login from '../Login/LoginCheck2';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

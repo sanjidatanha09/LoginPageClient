@@ -1,33 +1,27 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+
 import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
+
     const emailRef = useRef(null);
     const auth = getAuth();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, user, logOut } = useContext(AuthContext);
 
-    const onSubmit = async (data) => {
-        const { email, password } = data;
-        try {
-            const result = await signIn(email, password);
-            const user = result.user;
-            console.log(user);
 
-            if (result.user.emailVerified) {
-                console.log('User logged in successfully');
-            } else {
-                alert('Please verify your email address');
-            }
-        } catch (error) {
-            console.error('Error signing in:', error);
-        }
-    };
+    const handleLogOut = () => {
+        logOut()
+            .then((result) => {
+                console.log(result.data)
+            })
+            .catch(error => console.log(error));
+
+    }
+
 
     const handleForgetPassword = () => {
         const email = emailRef.current.value;
@@ -48,59 +42,73 @@ const Login = () => {
             });
     };
 
+
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        // const captcha= form.captcha.value;
+        console.log(email, password)
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+    }
+
+
     return (
-        <>
-            <Helmet>
-                <title>Login</title>
-            </Helmet>
+        <div>
             <div className="hero min-h-screen bg-base-200">
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                        <p>Login here</p>
+
+
+                <div className="card shrink-0 w-full max-w-sm 
+                    shadow-2xl bg-base-100">
+                    <form onSubmit={handleLogin} className="card-body">
+                        <p>Login Check without useforms</p>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input
-                                type='email'
-                                {...register("email", { required: true })} // Ensure proper registration
-                                ref={emailRef}
-                                placeholder="email"
-                                className="input input-bordered"
-                            />
-                            {errors.email && <span className='text-red-600'>This field is required</span>}
+                            <input type="email" name="email"
+                                ref={emailRef} placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input
-                                type="password"
-                                {...register("password", {
-                                    required: true,
-                                    maxLength: 20,
-                                    minLength: 6,
-                                    pattern: /([^A-Za-z].{6})(?=.*[!@#$%&*^])/
-                                })}
-                                placeholder="password"
-                                className="input input-bordered"
-                            />
-                            {errors.password?.type === 'required' && <span>This field is required</span>}
-                            {errors.password?.type === 'minLength' && <span>Password must be 6 characters</span>}
-                            {errors.password?.type === 'maxLength' && <span>Password less than 20 characters</span>}
-                            {errors.password?.type === 'pattern' && <span>Must contain one lowercase letter, one number, one uppercase letter, and one special character</span>}
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <a onClick={handleForgetPassword} href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
+
+
                         <div className="form-control mt-6">
-                            <input className='btn btn-primary' type="submit" value='Login' />
+                            {
+                                user ? <>
+
+                                    <button onClick={handleLogOut} className='btn btn-primary'>Logout</button>
+
+                                </> : <>
+                                    <button className='btn btn-primary'><Link to='/login'>Login</Link></button>
+
+                                </>
+                            }
                         </div>
                     </form>
-                    <Link to='/registration'>Registration</Link>
+                    <Link to='/registration'>Registration
+
+                    </Link>
                 </div>
             </div>
-        </>
+        </div>
+
+
     );
 };
 
