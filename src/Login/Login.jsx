@@ -15,11 +15,11 @@ const Login = () => {
     const { signIn, user, logOut, googleSignIn } = useContext(AuthContext);
 
 
+  
+
     const handleLogOut = () => {
         logOut()
-            .then((result) => {
-                console.log(result.data)
-            })
+            .then(() => {})
             .catch(error => console.log(error));
 
     }
@@ -101,9 +101,18 @@ const Login = () => {
                 console.log(user);
 
                 if (result.user.emailVerified) {
-                    console.log('User logged in successfully .....');
+                    Swal.fire({
+
+                        text: "user logged in successfully",
+                        icon: "success"
+                    });
                 } else {
-                    alert('Please verify your email address');
+                    Swal.fire({
+                        
+                        text: "Please verify your email address",
+                        icon: "success"
+                    });
+                    
                     
                 }
 

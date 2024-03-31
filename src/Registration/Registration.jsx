@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { sendEmailVerification } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -53,6 +55,11 @@ const Registration = () => {
                     
                     reset();
                 })
+
+            })
+            .catch(error => {
+                console.error(error)
+                toast(error.message);
 
             })
     }
@@ -176,6 +183,7 @@ const Registration = () => {
 
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </>
     );
