@@ -36,7 +36,7 @@ const Registration = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // alert('please check your email and verfiy your account')
+                    
                     reset();
                 })
 

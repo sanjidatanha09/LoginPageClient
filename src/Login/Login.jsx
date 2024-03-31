@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -26,19 +27,43 @@ const Login = () => {
     const handleForgetPassword = () => {
         const email = emailRef.current.value;
         if (!email) {
-            console.log('Please provide an email');
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Please provide an email",
+                showConfirmButton: false,
+                timer: 1500
+            });
             return;
+            
         } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            console.log('Please enter a valid email');
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Please provide an email",
+                showConfirmButton: false,
+                timer: 1500
+            });
             return;
+            
         }
 
         sendPasswordResetEmail(auth, email)
             .then(() => {
-                alert('Please check your email');
+                
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Please check your email",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
                 console.log('Error sending password reset email:', error);
+                
             });
     };
 
@@ -56,6 +81,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                if (result.user.emailVerified) {
+                    console.log('User logged in successfully .....');
+                } else {
+                    alert('Please verify your email address');
+                    
+                }
+
                 form.reset();
             })
     }
@@ -90,7 +123,7 @@ const Login = () => {
 
                         <div className="form-control mt-6">
                             {
-                                user ? <>
+                                user?.emailVerified ? <>
 
                                     <button onClick={handleLogOut} className='btn btn-primary'>Logout</button>
 
