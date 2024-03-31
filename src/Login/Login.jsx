@@ -110,32 +110,34 @@ const Login = () => {
         <div className=''>
             <div className="hero min-h-screen ">
 
-                <div className='flex bg-[#ebdcc3]  items-center justify-between w-[1200px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl'>
-                    <div className='w-1/2 h-[500px] border mx-auto'>
-                        <img className='w-full border h-full' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
+                <div className='flex bg-[#f0e6d5]  items-center justify-center w-[1200px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl  '>
+                    <div className='w-[60%] h-[500px]  mx-auto'>
+                        <img className='h-full w-full' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
                     </div>
 
                
 
 
-                    <div className="card shrink-0 w-1/2 mx-auto h-[600px] max-w-sm 
-                    shadow-2xl ">
-                        <form onSubmit={handleLogin} className="card-body bg-[#dbd2c2]">
-                        <p className='font-bold text-2xl text-center'>Login Form</p>
+                    <div className=" w-[40%] mx-auto h-[600px]  
+                    shadow-2xl rounded-2xl mr-20">
+
+                        {/* form start */}
+                        <form onSubmit={handleLogin} className="card-body bg-[#f0e6d5] rounded-2xl w-full  h-[600px]  ">
+                        <p className='font-bold text-3xl text-center'>Login Form</p>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text text-xl font-bold">Email</span>
                             </label>
                             <input type="email" name="email"
                                 ref={emailRef} placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                    <span className="label-text text-xl font-bold">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</a>
+                                <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover font-bold">Forgot password?</a>
                             </label>
                         </div>
 
@@ -144,16 +146,16 @@ const Login = () => {
                             {
                                 user?.emailVerified ? <>
 
-                                    <button onClick={handleLogOut} className='btn btn-primary'>Logout</button>
+                                        <button onClick={handleLogOut} className='btn btn-warning font-bold text-xl uppercase'>Logout</button>
 
                                 </> : <>
-                                    <button className='btn btn-primary'><Link to='/login'>Login</Link></button>
+                                            <button className='btn btn-warning font-bold text-xl uppercase'><Link to='/login'>Login</Link></button>
 
                                 </>
                             }
                         </div>
-                        <div>
-                            <span>New here? Create a New Account </span> <Link className='font-bold' to='/registration'>Register
+                        <div className='border w-[282px] mx-auto mt-5'>
+                            <span className='text-sm w-full '>New here? Create a New Account </span> <Link className='font-bold' to='/registration'>Register
                             </Link>
                            
                         </div>
@@ -161,14 +163,14 @@ const Login = () => {
                        
 
                         <div>
-                            <h1 className='text-center font-bold text-sm text-gray-600'>or Login with</h1>
+                            <h1 className='text-center font-bold text-xl pt-4'>or Login with</h1>
 
 
-                            <div className='flex justify-center gap-5 mt-5 items-center '>
+                            <div className='flex justify-center gap-1  items-center  '>
                                 <button
                                     onClick={handleGoogle}
                                     type="button"
-                                    className=" h-[50px] w-[50px]"
+                                    className=" h-[50px] w-[50px] ml-4"
                                 >
                                     <img className=' w-[50px]'  src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
                                     {/* <FaGofore className='text-red-800'></FaGofore>  */}

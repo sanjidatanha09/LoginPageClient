@@ -15,9 +15,21 @@ const Registration = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser,googleSignIn } = useContext(AuthContext);
+
+    const handleGoogle = () => {
+        googleSignIn().then(result => {
+            console.log(result.user)
+            // toast('user login successfully');
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName
+
+            }
 
 
+        });
+    };
 
     const onSubmit = data => {
         console.log(data);
@@ -53,20 +65,22 @@ const Registration = () => {
             <Helmet>
                 <title>Registration</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Register</h1>
+            <div className="hero min-h-screen ">
+                <div className="flex bg-[#f0e6d5]  items-center justify-center border w-[1250px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl  lg:flex-row-reverse gap-0 ">
+                   
+                        <div className='w-[60%] h-[600px]  mx-auto'>
+                            <img className='h-full w-full border' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
+                        </div>
 
-                    </div>
-                    <div className="card shrink-0 w-full max-w-sm 
-                    shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <p>register here</p>
+                 
+                    <div className="w-[40%] mx-auto h-[650px]  
+                    shadow-2xl rounded-2xl ml-20">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body bg-[#f0e6d5] rounded-2xl w-full  h-[600px] ">
+                            <p className='font-bold text-3xl text-center'>Please Register here</p>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text text-xl font-bold">Name</span>
                                 </label>
                                 <input  {...register("name", { required: true })} name="name" placeholder="name" className="input input-bordered" />
 
@@ -76,14 +90,14 @@ const Registration = () => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-xl font-bold">Email</span>
                                 </label>
                                 <input type='email' {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className='text-red-600'>This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-xl font-bold">Password</span>
                                 </label>
                                 <input type="password" {...register("password", {
                                     required: true,
@@ -107,14 +121,45 @@ const Registration = () => {
 
 
                             <div className="form-control mt-6">
-                                <input className='btn btn-primary' type="submit" value='Registration' />
+                                <input className='btn btn-warning font-bold text-xl uppercase' type="submit" value='Register' />
 
                             </div>
+
+                            <div className=' mt-5 text-center'>
+                                <span className='text-sm w-full '>Already Registered? Go to  </span> <Link className='font-bold' to='/login'>Login
+                                </Link>
+
+                            </div>
+
+
+
+                            <div>
+                                <h1 className='text-center font-bold text-xl pt-4'>or SignUp with</h1>
+
+
+                                <div className='flex justify-center gap-1  items-center  '>
+                                    <button
+                                        onClick={handleGoogle}
+                                        type="button"
+                                        className=" h-[50px] w-[50px] ml-4"
+                                    >
+                                        <img className=' w-[50px]' src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
+                                        {/* <FaGofore className='text-red-800'></FaGofore>  */}
+                                    </button>
+
+                                    <button className=' h-[70px] w-[70px]'
+
+
+                                    >
+                                        <img className='h-full w-full' src="https://i.ibb.co/0Jv7Gx3/Git-Hub-removebg-preview.png" alt="" />
+                                    </button>
+                                </div>
+
+
+                            </div>
+
                         </form>
 
-                        <Link to='/login'>Login
-
-                        </Link>
                     </div>
                 </div>
             </div>
