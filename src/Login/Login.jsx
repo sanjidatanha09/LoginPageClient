@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from 'react';
-
+import { FaGithub, FaGofore } from 'react-icons/fa';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
@@ -11,7 +11,7 @@ const Login = () => {
 
     const emailRef = useRef(null);
     const auth = getAuth();
-    const { signIn, user, logOut } = useContext(AuthContext);
+    const { signIn, user, logOut, googleSignIn } = useContext(AuthContext);
 
 
     const handleLogOut = () => {
@@ -67,7 +67,19 @@ const Login = () => {
             });
     };
 
+    const handleGoogle = () => {
+        googleSignIn().then(result => {
+            console.log(result.user)
+            // toast('user login successfully');
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName
 
+            }
+
+
+        });
+    };
 
     const handleLogin = event => {
         event.preventDefault();
@@ -95,14 +107,21 @@ const Login = () => {
 
 
     return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
+        <div className=''>
+            <div className="hero min-h-screen ">
+
+                <div className='flex bg-[#ebdcc3]  items-center justify-between w-[1200px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl'>
+                    <div className='w-1/2 h-[500px] border mx-auto'>
+                        <img className='w-full border h-full' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
+                    </div>
+
+               
 
 
-                <div className="card shrink-0 w-full max-w-sm 
-                    shadow-2xl bg-base-100">
-                    <form onSubmit={handleLogin} className="card-body">
-                        <p>Login Check without useforms</p>
+                    <div className="card shrink-0 w-1/2 mx-auto h-[600px] max-w-sm 
+                    shadow-2xl ">
+                        <form onSubmit={handleLogin} className="card-body bg-[#dbd2c2]">
+                        <p className='font-bold text-2xl text-center'>Login Form</p>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -133,10 +152,46 @@ const Login = () => {
                                 </>
                             }
                         </div>
-                    </form>
-                    <Link to='/registration'>Registration
+                        <div>
+                            <span>New here? Create a New Account </span> <Link className='font-bold' to='/registration'>Register
+                            </Link>
+                           
+                        </div>
 
-                    </Link>
+                       
+
+                        <div>
+                            <h1 className='text-center font-bold text-sm text-gray-600'>or Login with</h1>
+
+
+                            <div className='flex justify-center gap-5 mt-5 items-center '>
+                                <button
+                                    onClick={handleGoogle}
+                                    type="button"
+                                    className=" h-[50px] w-[50px]"
+                                >
+                                    <img className=' w-[50px]'  src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
+                                    {/* <FaGofore className='text-red-800'></FaGofore>  */}
+                                </button>
+
+                                <button className=' h-[70px] w-[70px]'
+
+                                  
+                                >
+                                    <img className='h-full w-full' src="https://i.ibb.co/0Jv7Gx3/Git-Hub-removebg-preview.png" alt="" />
+                                </button>
+                            </div>
+
+
+                        </div>
+
+
+                      
+                    </form>
+
+
+
+                </div>
                 </div>
             </div>
         </div>
