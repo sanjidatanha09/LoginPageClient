@@ -5,6 +5,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -71,6 +72,11 @@ const Login = () => {
         googleSignIn().then(result => {
             console.log(result.user)
             // toast('user login successfully');
+            Swal.fire({
+                title: "Good job!",
+                text: "user login successfully",
+                icon: "success"
+            });
             const userInfo = {
                 email: result.user?.email,
                 name: result.user?.displayName
@@ -107,10 +113,15 @@ const Login = () => {
 
 
     return (
-        <div className=''>
+        <>
+
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
+
             <div className="hero min-h-screen ">
 
-                <div className='flex bg-[#f0e6d5]  items-center justify-center w-[1200px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl  '>
+                <div className='flex bg-[#f0e6d5]  items-center justify-center w-[1000px] mx-auto h-[700px] rounded-lg  shadow-zinc-600  shadow-2xl  '>
                     <div className='w-[60%] h-[500px]  mx-auto'>
                         <img className='h-full w-full' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
                     </div>
@@ -214,7 +225,7 @@ const Login = () => {
                 </div>
                 </div>
             </div>
-        </div>
+        </>
 
 
     );

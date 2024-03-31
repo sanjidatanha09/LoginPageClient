@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { FaGithub, FaGofore, FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 
 
 const Registration = () => {
+    const [showpassword, setShowpassword] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -66,7 +68,7 @@ const Registration = () => {
                 <title>Registration</title>
             </Helmet>
             <div className="hero min-h-screen ">
-                <div className="flex bg-[#f0e6d5]  items-center justify-center border w-[1250px] mx-auto h-[900px] rounded-lg  shadow-zinc-600  shadow-2xl  lg:flex-row-reverse gap-0 ">
+                <div className="flex bg-[#f0e6d5]  items-center justify-center border w-[1100px] mx-auto h-[760px] rounded-lg  shadow-zinc-600  shadow-2xl  lg:flex-row-reverse gap-0 ">
                    
                         <div className='w-[60%] h-[600px]  mx-auto'>
                             <img className='h-full w-full border' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
@@ -95,11 +97,14 @@ const Registration = () => {
                                 <input type='email' {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className='text-red-600'>This field is required</span>}
                             </div>
-                            <div className="form-control">
+
+                            {/* password start here */}
+
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text text-xl font-bold">Password</span>
                                 </label>
-                                <input type="password" {...register("password", {
+                                <input type={showpassword ? "text" : "password"} {...register("password", {
                                     required: true,
                                     maxLength: 20,
                                     minLength: 6,
@@ -107,6 +112,15 @@ const Registration = () => {
 
                                 })}
                                     placeholder="password" className="input input-bordered" />
+
+
+                                <span className='bottom-4 lg:bottom-[14px] right-4 absolute ' onClick={() => setShowpassword(!showpassword)}>
+                                    {
+                                        showpassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaEye></FaEye>
+                                    }
+
+                                </span>
+
                                 {errors.password?.type === 'required' && <span>This field is required</span>}
 
                                 {errors.password?.type === 'minLength' && <span>password must be 6 character</span>}
