@@ -8,6 +8,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 
 
+
 const Login = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -25,10 +26,6 @@ const Login = () => {
 
   
 
-
-
-
-
     return (
         <>
 
@@ -36,25 +33,14 @@ const Login = () => {
                 <title>Login</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Register</h1>
 
-                    </div>
+                   
                     <div className="card shrink-0 w-full max-w-sm 
                     shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <p>register here</p>
+                            <p>Login here</p>
 
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input  {...register("name", { required: true })} name="name" placeholder="name" className="input input-bordered" />
-
-                                {errors.name && <span>This field is required</span>}
-                            </div>
-
+                           
 
                             <div className="form-control">
                                 <label className="label">
@@ -101,7 +87,7 @@ const Login = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            
         </>
     );
 };

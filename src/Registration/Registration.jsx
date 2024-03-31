@@ -8,6 +8,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 
 
+
 const Registration = () => {
 
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -23,8 +24,7 @@ const Registration = () => {
             })
     }
 
-    //field change then see
-    console.log(watch("name"));
+
 
 
 
