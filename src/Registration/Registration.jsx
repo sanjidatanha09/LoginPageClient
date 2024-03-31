@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+import { sendEmailVerification } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 
 
@@ -11,9 +13,11 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 const Registration = () => {
 
-    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const { createUser } = useContext(AuthContext);
+
+
 
     const onSubmit = data => {
         console.log(data);
@@ -21,10 +25,23 @@ const Registration = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+
+                //send verification email
+                sendEmailVerification(result.user)
+                .then(() =>{
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "please check your email and verfiy your account",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // alert('please check your email and verfiy your account')
+                    reset();
+                })
+
             })
     }
-
-
 
 
 

@@ -9,7 +9,7 @@ const Main = () => {
             
 
             <Outlet></Outlet>
-            <Login></Login>
+    
 
         </div>
     );
