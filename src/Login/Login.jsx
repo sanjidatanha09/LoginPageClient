@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { FaGithub, FaGofore } from 'react-icons/fa';
+import { FaGithub, FaGofore  ,FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
 
-
+    const [showpassword, setShowpassword] = useState(false);
     const emailRef = useRef(null);
     const auth = getAuth();
     const { signIn, user, logOut, googleSignIn } = useContext(AuthContext);
@@ -131,15 +131,33 @@ const Login = () => {
                             <input type="email" name="email"
                                 ref={emailRef} placeholder="email" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                    <span className="label-text text-xl font-bold">Password</span>
-                            </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+
+                        {/* password here */}
+
+                        <div className="form-control  relative">
+                         
+                                    <label className="label">
+                                        <span className="label-text text-xl font-bold">Password</span>
+                                    </label>
+                                    <input type={showpassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
+
+                                    {/*bottom-4 lg:bottom-[14px] right-4 absolute  */}
+
+
+                                    <span className='bottom-4 lg:bottom-[14px] right-4 absolute ' onClick={() => setShowpassword(!showpassword)}>
+                                        {
+                                            showpassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaEye></FaEye>
+                                        }
+
+                                    </span>
+
+                          </div>
+
+                                {/* forgot password here */}
                             <label className="label">
                                 <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover font-bold">Forgot password?</a>
                             </label>
-                        </div>
+                    
 
 
                         <div className="form-control mt-6">
