@@ -2,9 +2,17 @@
 import React from 'react';
 import Login from '../Login/LoginCheck2';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
+
+        <>
+
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+       
         <div className='min-h-screen text-center'>
 
             <Link to='/login'>
@@ -12,6 +20,8 @@ const Home = () => {
             </Link>
             
         </div>
+
+        </>
     );
 };
 
