@@ -75,31 +75,40 @@ const Registration = () => {
                 <title>Registration</title>
             </Helmet>
             <div className="hero min-h-screen ">
-                <div className="flex bg-[#f0e6d5]  items-center justify-center border w-[1100px] mx-auto h-[760px] rounded-lg  shadow-zinc-600  shadow-2xl  lg:flex-row-reverse gap-0 ">
+                <div className="flex flex-col lg:flex-row-reverse md:w-[700px] lg:w-[1100px]  md:h-[1200px] lg:h-[780px]   mt-5 lg:mt-0  bg-[#f0e6d5] items-center justify-center  mx-auto  rounded-lg  shadow-zinc-600  shadow-2xl gap-0 ">
                    
-                        <div className='w-[60%] h-[600px]  mx-auto'>
+                        <div className=' w-full lg:w-[60%] h-[380px] md:h-[600px]  mx-auto'>
                             <img className='h-full w-full border' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
                         </div>
 
                  
-                    <div className="w-[40%] mx-auto h-[650px]  
-                    shadow-2xl rounded-2xl ml-20">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body bg-[#f0e6d5] rounded-2xl w-full  h-[600px] ">
-                            <p className='font-bold text-3xl text-center'>Please Register here</p>
+                    <div className="w-[80%] lg:w-[40%] mx-auto md:h-[820px] lg:h-[640px] 
+                    shadow-2xl rounded-2xl lg:ml-20 mb-6 lg:mb-0">
 
+                        {/* form start here */}
+
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body bg-[#f0e6d5] rounded-2xl w-full  h-[600px] ">
+                            <p className='font-extrabold md:font-bold text-xl md:text-2xl text-center uppercase mb-2'>Please Register here</p>
+
+                            {/* name start here */}
+
+                            
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-xl font-bold">Name</span>
+                                    <span className="label-text text-base md:text-2xl lg:text-xl font-extrabold md:font-bold">Full Name</span>
                                 </label>
                                 <input  {...register("name", { required: true })} name="name" placeholder="name" className="input input-bordered" />
 
                                 {errors.name && <span>This field is required</span>}
                             </div>
 
+                            {/*Email start here */}
+
+
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-xl font-bold">Email</span>
+                                    <span className="label-text text-base md:text-2xl lg:text-xl font-extrabold md:font-bold">Email Address</span>
                                 </label>
                                 <input type='email' {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className='text-red-600'>This field is required</span>}
@@ -109,7 +118,7 @@ const Registration = () => {
 
                             <div className="form-control relative">
                                 <label className="label">
-                                    <span className="label-text text-xl font-bold">Password</span>
+                                    <span className="label-text text-base md:text-2xl lg:text-xl font-extrabold md:font-bold">Password</span>
                                 </label>
                                 <input type={showpassword ? "text" : "password"} {...register("password", {
                                     required: true,
@@ -142,12 +151,12 @@ const Registration = () => {
 
 
                             <div className="form-control mt-6">
-                                <input className='btn btn-warning font-bold text-xl uppercase' type="submit" value='Register' />
+                                <input className='btn btn-warning text-xl font-bold md:text-2xl uppercase' type="submit" value='Register' />
 
                             </div>
 
                             <div className=' mt-5 text-center'>
-                                <span className='text-sm w-full '>Already Registered? Go to  </span> <Link className='font-bold' to='/login'>Login
+                                <span className='text-sm md:text-lg lg:text-sm w-full '>Already Registered? Go to  </span> <Link className='font-bold md:text-xl lg:text-lg' to='/login'>Login
                                 </Link>
 
                             </div>
@@ -155,20 +164,20 @@ const Registration = () => {
 
 
                             <div>
-                                <h1 className='text-center font-bold text-xl pt-4'>or SignUp with</h1>
+                                <h1 className='text-center font-bold md:text-2xl lg:text-xl pt-2 md:pt-4'>or SignUp with</h1>
 
 
-                                <div className='flex justify-center gap-1  items-center  '>
+                                <div className='flex justify-center gap-1  items-center ml-3  md:ml-6 lg:ml-4'>
                                     <button
                                         onClick={handleGoogle}
                                         type="button"
-                                        className=" h-[50px] w-[50px] ml-4"
+                                        className=" "
                                     >
-                                        <img className=' w-[50px]' src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
-                                        {/* <FaGofore className='text-red-800'></FaGofore>  */}
+                                        <img className=' w-[50px] md:w-[80px] lg:w-[50px]' src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
+                                        
                                     </button>
 
-                                    <button className=' h-[70px] w-[70px]'
+                                    <button className=' h-[70px] md:h-[115px] lg:h-[70px] w-[70px] md:w-[115px] lg:w-[70px]'
 
 
                                     >

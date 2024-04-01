@@ -130,23 +130,26 @@ const Login = () => {
 
             <div className="hero min-h-screen ">
 
-                <div className='flex bg-[#f0e6d5]  items-center justify-center w-[1000px] mx-auto h-[700px] rounded-lg  shadow-zinc-600  shadow-2xl  '>
-                    <div className='w-[60%] h-[500px]  mx-auto'>
+                <div className='flex flex-col lg:flex-row bg-[#f0e6d5]  items-center justify-center md:w-[700px] lg:w-[1000px] mx-auto md:h-[1200px] lg:h-[700px] mt-5 lg:mt-0  rounded-lg  shadow-zinc-600  shadow-2xl '>
+                    <div className='mt-5 lg:mt-0 w-full lg:w-[60%] lg:h-[500px]  mx-auto '>
                         <img className='h-full w-full' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
                     </div>
 
                
 
 
-                    <div className=" w-[40%] mx-auto h-[600px]  
-                    shadow-2xl rounded-2xl mr-20">
+                    <div className="w-[80%]  mx-auto lg:w-[40%] h-[540px] md:h-[750px] mb-6 lg:mb-0 lg:h-[600px]  
+                    shadow-2xl rounded-2xl lg:mr-20">
 
                         {/* form start */}
-                        <form onSubmit={handleLogin} className="card-body bg-[#f0e6d5] rounded-2xl w-full  h-[600px]  ">
-                        <p className='font-bold text-3xl text-center'>Login Form</p>
-                        <div className="form-control">
+                        <form onSubmit={handleLogin} className="card-body bg-[#f0e6d5] rounded-2xl  lg:w-full h-[500px]  lg:h-[600px]  ">
+                            <p className='font-extrabold text-xl md:text-4xl lg:text-2xl text-center mb-5 lg:mb-0'>Login Form</p>
+
+                        {/* Email here */}
+
+                        <div className="form-control ">
                             <label className="label">
-                                <span className="label-text text-xl font-bold">Email</span>
+                                <span className="label-text text-lg md:text-2xl lg:text-xl font-bold">Email Address</span>
                             </label>
                             <input type="email" name="email"
                                 ref={emailRef} placeholder="email" className="input input-bordered" required />
@@ -157,7 +160,7 @@ const Login = () => {
                         <div className="form-control  relative">
                          
                                     <label className="label">
-                                        <span className="label-text text-xl font-bold">Password</span>
+                                    <span className="label-text  text-lg md:text-2xl lg:text-xl font-bold">Password</span>
                                     </label>
                                     <input type={showpassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
 
@@ -180,20 +183,20 @@ const Login = () => {
                     
 
 
-                        <div className="form-control mt-6">
+                        <div className="form-control mt-3 md:mt-6">
                             {
                                 user?.emailVerified ? <>
 
-                                        <button onClick={handleLogOut} className='btn btn-warning font-bold text-xl uppercase'>Logout</button>
+                                        <button onClick={handleLogOut} className='btn btn-warning font-bold md:font-extrabold text-lg md:text-xl uppercase'>Logout</button>
 
                                 </> : <>
-                                            <button className='btn btn-warning font-bold text-xl uppercase'><Link to='/login'>Login</Link></button>
+                                            <button className='btn btn-warning font-bold md:font-extrabold  uppercase text-lg md:text-xl'><Link to='/login'>Login</Link></button>
 
                                 </>
                             }
                         </div>
-                        <div className='border w-[282px] mx-auto mt-5'>
-                            <span className='text-sm w-full '>New here? Create a New Account </span> <Link className='font-bold' to='/registration'>Register
+                            <div className='w-[282px] md:w-[340px] lg:w-[282px] mx-auto md:mt-5'>
+                            <span className='text-sm md:text-base lg:text-sm w-full '>New here? Create a New Account </span> <Link className='font-bold md:text-xl lg:text-lg' to='/registration'>Register
                             </Link>
                            
                         </div>
@@ -201,20 +204,20 @@ const Login = () => {
                        
 
                         <div>
-                            <h1 className='text-center font-bold text-xl pt-4'>or Login with</h1>
+                            <h1 className='text-center font-bold md:text-2xl lg:text-xl pt-2 md:pt-4'>or Login with</h1>
 
 
-                            <div className='flex justify-center gap-1  items-center  '>
+                            <div className='flex justify-center gap-1  items-center '>
                                 <button
                                     onClick={handleGoogle}
                                     type="button"
-                                    className=" h-[50px] w-[50px] ml-4"
+                                    className=" lg:h-[50px] lg:w-[50px] ml-2 md:ml-6 lg:ml-4"
                                 >
-                                    <img className=' w-[50px]'  src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
+                                    <img className='w-[50px] md:w-[80px] lg:w-[50px]'  src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
                                     {/* <FaGofore className='text-red-800'></FaGofore>  */}
                                 </button>
 
-                                <button className=' h-[70px] w-[70px]'
+                                    <button className='h-[70px] md:h-[115px] lg:h-[70px] w-[70px] md:w-[115px] lg:w-[70px]'
 
                                   
                                 >
