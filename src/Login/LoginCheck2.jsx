@@ -106,12 +106,12 @@ const LoginCheck2 = () => {
                         <div className="form-control mt-6">
 
                             {
-                                user ? <>
+                                user ?.emailVerified ? <>
 
                                     <button onClick={handleLogOut} className='btn btn-primary'>Logout</button>
 
                                 </> : <>
-                                    <button className='btn btn-primary'><Link to='/login'>Login</Link></button>
+                                    <button className='btn btn-primary'>Login</button>
 
                                 </>
                             }

@@ -185,12 +185,12 @@ const Login = () => {
 
                         <div className="form-control mt-3 md:mt-6">
                             {
-                                user?.emailVerified ? <>
+                                user? <>
 
                                         <button onClick={handleLogOut} className='btn btn-warning font-bold md:font-extrabold text-lg md:text-xl uppercase'>Logout</button>
 
                                 </> : <>
-                                            <button className='btn btn-warning font-bold md:font-extrabold  uppercase text-lg md:text-xl'><Link to='/login'>Login</Link></button>
+                                            <button className='btn btn-warning font-bold md:font-extrabold  uppercase text-lg md:text-xl'>Login</button>
 
                                 </>
                             }
@@ -214,7 +214,7 @@ const Login = () => {
                                     className=" lg:h-[50px] lg:w-[50px] ml-2 md:ml-6 lg:ml-4"
                                 >
                                     <img className='w-[50px] md:w-[80px] lg:w-[50px]'  src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
-                                    {/* <FaGofore className='text-red-800'></FaGofore>  */}
+                                    
                                 </button>
 
                                     <button className='h-[70px] md:h-[115px] lg:h-[70px] w-[70px] md:w-[115px] lg:w-[70px]'
