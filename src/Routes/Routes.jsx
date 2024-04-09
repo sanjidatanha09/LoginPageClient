@@ -31,6 +31,8 @@ export const router = createBrowserRouter([
                 path: '/login',
                 element: <Login></Login>
             },
+
+            // this is for registration page
     
             {
                 path: '/registration',
