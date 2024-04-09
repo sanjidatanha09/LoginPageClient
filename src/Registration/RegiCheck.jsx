@@ -112,9 +112,9 @@ const Registration = () => {
                             </div>
                         </form>
 
-                        <Link to='/login'>Login
+                        {/* <Link to='/login'>Login
 
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
