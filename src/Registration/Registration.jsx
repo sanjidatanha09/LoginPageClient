@@ -11,16 +11,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
-
-
 const Registration = () => {
-    const [showpassword, setShowpassword] = useState(false);
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
-    const { createUser,googleSignIn } = useContext(AuthContext);
-
+    const [showpassword,setShowpassword]=useState(false);
+    const {register,handleSubmit,formState:{errors},reset} =useForm();
+    const {createUser,googleSignIn}=useContext(AuthContext);
     const handleGoogle = () => {
         googleSignIn().then(result => {
             console.log(result.user)
@@ -28,10 +22,7 @@ const Registration = () => {
             const userInfo = {
                 email: result.user?.email,
                 name: result.user?.displayName
-
             }
-
-
         });
     };
 
@@ -41,47 +32,35 @@ const Registration = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-
                 //send verification email
                 sendEmailVerification(result.user)
-                .then(() =>{
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "please check your email and verfiy your account",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    
-                    reset();
-                })
-
+                    .then(() => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "please check your email and verfiy your account",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        reset();
+                    })
             })
             .catch(error => {
                 console.error(error)
                 toast(error.message);
-
             })
     }
 
-
-
-
-
     return (
         <>
-
             <Helmet>
                 <title>Registration</title>
             </Helmet>
-            <div className="hero min-h-screen ">
+            <div className="hero min-h-screen">
                 <div className="flex flex-col lg:flex-row-reverse md:w-[700px] lg:w-[1100px]  md:h-[1200px] lg:h-[780px]   mt-5 lg:mt-0  bg-[#f0e6d5] items-center justify-center  mx-auto  rounded-lg  shadow-zinc-600  shadow-2xl gap-0 ">
-                   
-                        <div className=' w-full lg:w-[60%] h-[380px] md:h-[600px]  mx-auto'>
-                            <img className='h-full w-full border' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
-                        </div>
-
-                 
+                    <div className=' w-full lg:w-[60%] h-[380px] md:h-[600px] mx-auto'>
+                        <img className='h-full w-full border' src="https://i.ibb.co/R78sQMr/authentication2.png" alt="" />
+                    </div>
                     <div className="w-[80%] lg:w-[40%] mx-auto md:h-[820px] lg:h-[640px] 
                     shadow-2xl rounded-2xl lg:ml-20 mb-6 lg:mb-0">
 
@@ -92,7 +71,7 @@ const Registration = () => {
 
                             {/* name start here */}
 
-                            
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-base md:text-2xl lg:text-xl font-extrabold md:font-bold">Full Name</span>
@@ -146,7 +125,7 @@ const Registration = () => {
                                 {errors.password?.type === 'pattern' && <span>one lower case, one number ,one upper case and special character</span>}
 
 
-                                
+
                             </div>
 
 
@@ -174,7 +153,7 @@ const Registration = () => {
                                         className=" "
                                     >
                                         <img className=' w-[50px] md:w-[80px] lg:w-[50px]' src="https://i.ibb.co/YyDRLpV/gogle-removebg-preview.png" alt="" />
-                                        
+
                                     </button>
 
                                     <button className=' h-[70px] md:h-[115px] lg:h-[70px] w-[70px] md:w-[115px] lg:w-[70px]'
