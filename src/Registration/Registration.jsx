@@ -108,8 +108,8 @@ const Registration = () => {
                                 <input className='btn btn-warning text-xl font-bold md:text-2xl uppercase' type="submit" value='Register' />
                             </div>
                             <div className=' mt-5 text-center'>
-                                <span className='text-sm md:text-lg lg:text-sm w-full '>Already Registered? Go to  </span> <Link className='font-bold md:text-xl lg:text-lg' to='/login'>Login
-                                </Link>
+                                <span className='text-sm md:text-lg lg:text-sm w-full'>Already Registered? Go to </span> 
+                                <Link className='font-bold md:text-xl lg:text-lg' to='/login'>Login</Link>
                             </div>
                             <div>
                                 <h1 className='text-center font-bold md:text-2xl lg:text-xl pt-2 md:pt-4'>or SignUp with</h1>
