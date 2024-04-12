@@ -110,6 +110,7 @@ const LoginCheck2 = () => {
 
                         </div>
                     </form>
+                    {/* link for registration */}
                     <Link to='/registration'>Registration</Link>
                 </div>
             </div>
