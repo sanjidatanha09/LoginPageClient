@@ -78,12 +78,7 @@ const Registration = () => {
                             <div className="form-control mt-6">
                                 <input className='btn btn-primary' type="submit" value='Registration' />
                             </div>
-                            {/* <div className="form-control mt-6">
-                                <input className='btn btn-primary' type="submit" value='Registration' />
-                            </div> */}
                         </form>
-                        {/* <Link to='/login'>Login
-                        </Link> */}
                     </div>
                 </div>
             </div>
