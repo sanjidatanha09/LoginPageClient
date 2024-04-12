@@ -7,25 +7,15 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { sendEmailVerification } from 'firebase/auth';
 import Swal from 'sweetalert2';
 
-
-
-
-
 const Registration = () => {
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
     const { createUser } = useContext(AuthContext);
-
-
-
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-
                 //send verification email
                 sendEmailVerification(result.user)
                     .then(() => {
@@ -39,17 +29,10 @@ const Registration = () => {
                         // alert('please check your email and verfiy your account')
                         reset();
                     })
-
             })
     }
-
-
-
-
-
     return (
         <>
-
             <Helmet>
                 <title>Registration</title>
             </Helmet>
@@ -57,13 +40,11 @@ const Registration = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Register</h1>
-
                     </div>
                     <div className="card shrink-0 w-full max-w-sm 
                     shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <p>register here</p>
-
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
