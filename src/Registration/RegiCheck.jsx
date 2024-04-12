@@ -50,11 +50,8 @@ const Registration = () => {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input  {...register("name", { required: true })} name="name" placeholder="name" className="input input-bordered" />
-
                                 {errors.name && <span>This field is required</span>}
                             </div>
-
-
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -71,35 +68,21 @@ const Registration = () => {
                                     maxLength: 20,
                                     minLength: 6,
                                     pattern: /([^A-Za-z].{6})(?=.*[!@#$%&*^])/
-
                                 })}
                                     placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <span>This field is required</span>}
-
                                 {errors.password?.type === 'minLength' && <span>password must be 6 character</span>}
-
                                 {errors.password?.type === 'maxLength' && <span>password less than 20 character</span>}
-
                                 {errors.password?.type === 'pattern' && <span>one lower case, one number ,one upper case and special character</span>}
-
-
-
                             </div>
-
-
                             <div className="form-control mt-6">
                                 <input className='btn btn-primary' type="submit" value='Registration' />
-
                             </div>
-
                             {/* <div className="form-control mt-6">
                                 <input className='btn btn-primary' type="submit" value='Registration' />
-
                             </div> */}
                         </form>
-
                         {/* <Link to='/login'>Login
-
                         </Link> */}
                     </div>
                 </div>
