@@ -21,7 +21,6 @@ const LoginCheck2 = () => {
             .catch(error => console.log(error));
 
     }
-
     const onSubmit = async (data) => {
         const { email, password } = data;
         try {
