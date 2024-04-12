@@ -97,7 +97,6 @@ const LoginCheck2 = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-
                             {
                                 user ?.emailVerified ? <>
 
