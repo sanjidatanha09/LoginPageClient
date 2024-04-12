@@ -11,15 +11,12 @@ const LoginCheck2 = () => {
     const emailRef = useRef(null);
     const auth = getAuth();
     const { signIn, user, logOut } = useContext(AuthContext);
-
-
     const handleLogOut = () => {
         logOut()
             .then((result) => {
                 console.log(result.data)
             })
             .catch(error => console.log(error));
-
     }
     const onSubmit = async (data) => {
         const { email, password } = data;
