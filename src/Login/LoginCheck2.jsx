@@ -34,7 +34,6 @@ const LoginCheck2 = () => {
             console.error('Error signing in:', error);
         }
     };
-
     const handleForgetPassword = () => {
         const email = emailRef.current.value;
         if (!email) {
@@ -44,7 +43,6 @@ const LoginCheck2 = () => {
             console.log('Please enter a valid email');
             return;
         }
-
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 alert('Please check your email');
@@ -53,7 +51,6 @@ const LoginCheck2 = () => {
                 console.log('Error sending password reset email:', error);
             });
     };
-
     return (
         <>
             <Helmet>
