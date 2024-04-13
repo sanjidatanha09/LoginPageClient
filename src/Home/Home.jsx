@@ -13,6 +13,7 @@ const Home = () => {
             <div className='min-h-screen text-center'>
                 <Link to='/login'>
                     <button className="btn btn-warning mt-52 w-[200px] mx-auto font-bold text-xl">Please Login</button>
+                    
                 </Link>
             </div>
         </>
