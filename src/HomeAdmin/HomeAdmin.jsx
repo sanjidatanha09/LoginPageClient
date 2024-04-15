@@ -12,6 +12,7 @@ const HomeAdmin = () => {
             <input type="text" placeholder='type here name' />
             <h1>enter your phone number</h1>
             <input type="text" placeholder='type here name' />
+            <label htmlFor="to text"></label>
         </div>
     );
 };
